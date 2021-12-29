@@ -5,7 +5,7 @@
  *              Write a program to count the number of possible outcomes of 10 tosses
  *              of a coin where the output has no consecutive three tails
  *
- * Solution B: dynamic programming 
+ * Solution B: dynamic programming (buttom-up approach)
  * @copyright Copyright (c) 2021
  * 
  */
@@ -17,8 +17,8 @@
 /**
  * @brief counts the number of possibilities (sequences of heads and tails) resulting from tossing a coin.
  * 
- * @param tosses the number of required tosses
- * @param not_allowed the number of tails that are not allowed to be consecutive.
+ * @param tosses is the number of required tosses.
+ * @param not_allowed is the number of tails that are not allowed to be consecutive.
  * @return size_t
  */
 size_t coin_possibilities(int tosses, int not_allowed);

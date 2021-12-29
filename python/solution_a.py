@@ -17,14 +17,14 @@ from typing import Generator, Sequence, Tuple, Callable, Union
 def count_possibilities(
     length: int,
     sequence: Union[str, Sequence[str]],
-    is_valid: Callable[[Tuple[str]], bool] = None,
+    is_valid: Callable[[Tuple[str]], bool],
     res_tuple: Tuple[str] = tuple()
 ) -> int:
     """Count the number of possibilities of length 'length' that can be generated from the 'sequence'
     
     count_possibilities(length, sequence, pred, res_tuple)
     length: the required length of each possibility
-    sequence: the sequence that contains the options of which we can choose
+    sequence: the sequence that contains the options from which we can choose
     is_valid: a function that takes a sequence before appending an item to it to determine if this sequence should be treated as a valid one or not"""
 
     if len(res_tuple) == length:
@@ -32,12 +32,8 @@ def count_possibilities(
 
     possibilities_count = 0
 
-    if is_valid:
-        for item in sequence:
-            if is_valid(res_tuple + (item,)):
-                possibilities_count += count_possibilities(length, sequence, is_valid, res_tuple + (item,))
-    else:
-        for item in sequence:
+    for item in sequence:
+        if is_valid(res_tuple + (item,)):
             possibilities_count += count_possibilities(length, sequence, is_valid, res_tuple + (item,))
 
     return possibilities_count
@@ -52,8 +48,8 @@ def possibilities_generator(
 
     possibilities_generator(length, sequence, pred, res_tuple)
     length: the required length of each possibility
-    sequence: the sequence that contains the options of which we can choose
-    is_valid: a function that takes a sequence before appending an item to it to determine if this sequence should be treated as a valid one or not"""
+    sequence: the sequence that contains the options from which we can choose
+    is_valid: a function that takes a sequence before considering it while counting to determine if this sequence should be treated as a valid one or not"""
 
     if len(res_tuple) == length:
         yield res_tuple
@@ -75,7 +71,7 @@ def predicate(seq: Tuple[str]) -> bool:
     return "".join(seq[-3:]) != "TTT"
 
 if __name__ == "__main__":
-    number = int(input("Enter the number of tosses: "))
+    number = int(input("number of tosses: "))
     print(f"count = {count_possibilities(number, 'HT', predicate)}")
 
     # you can uncomment the following snippet to print the possibilities themselves
