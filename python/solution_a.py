@@ -25,7 +25,7 @@ def count_possibilities(
     count_possibilities(length, sequence, pred, res_tuple)
     length: the required length of each possibility
     sequence: the sequence that contains the options from which we can choose
-    is_valid: a function that takes a sequence before appending an item to it to determine if this sequence should be treated as a valid one or not"""
+    is_valid: is a function that takes a sequence before considering it while counting to determine if this sequence should be treated as a valid one or not"""
 
     if len(res_tuple) == length:
         return 1
@@ -49,7 +49,7 @@ def possibilities_generator(
     possibilities_generator(length, sequence, pred, res_tuple)
     length: the required length of each possibility
     sequence: the sequence that contains the options from which we can choose
-    is_valid: a function that takes a sequence before considering it while counting to determine if this sequence should be treated as a valid one or not"""
+    is_valid: is a function that takes a sequence before considering it while counting to determine if this sequence should be treated as a valid one or not"""
 
     if len(res_tuple) == length:
         yield res_tuple
